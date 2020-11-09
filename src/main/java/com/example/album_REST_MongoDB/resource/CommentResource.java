@@ -19,13 +19,16 @@ public class CommentResource {
         return commentService.getAllComments();
     }
 
-    @GetMapping
+    @GetMapping("/id")
     public Comment getCommentById(@RequestParam(name = "commentId") String commentId){
         return commentService.getCommentById(commentId);
     }
 
     @PostMapping
     public Comment saveComment(@RequestBody Comment comment){
+        if(comment.getDateCreated()==null){
+            comment.setDateCreated(java.time.LocalDate.now());
+        }
         return commentService.saveComment(comment);
     }
 
@@ -38,5 +41,4 @@ public class CommentResource {
     public String deleteComment(@RequestParam(name = "commentId") String commentId){
         return commentService.deleteComment(commentId);
     }
-
 }

@@ -19,7 +19,7 @@ public class UserResource {
         return userService.getAllUsers();
     }
 
-    @GetMapping
+    @GetMapping("/id")
     public User getUserById(@RequestParam(name = "userId") String userId){
         return userService.getUserById(userId);
     }
@@ -35,8 +35,7 @@ public class UserResource {
     }
 
     @DeleteMapping
-    public String updateUser(@RequestParam(name = "userId") String userId){
+    public String deleteUser(@RequestParam(name = "userId") String userId){
         return userService.deleteUser(userId);
     }
-
 }

@@ -43,5 +43,4 @@ public class User {
     public void setProfilePhotoUrl(String profilePhotoUrl) {
         this.profilePhotoUrl = profilePhotoUrl;
     }
-
 }
