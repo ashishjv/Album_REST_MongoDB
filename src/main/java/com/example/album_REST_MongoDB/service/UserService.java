@@ -3,9 +3,11 @@ package com.example.album_REST_MongoDB.service;
 import com.example.album_REST_MongoDB.model.User;
 import com.example.album_REST_MongoDB.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService {
 
     @Autowired

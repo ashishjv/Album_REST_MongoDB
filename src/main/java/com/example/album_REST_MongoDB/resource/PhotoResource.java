@@ -1,6 +1,5 @@
 package com.example.album_REST_MongoDB.resource;
 
-import com.example.album_REST_MongoDB.service.PhotoService;
 import com.example.album_REST_MongoDB.model.Photo;
 import com.example.album_REST_MongoDB.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +19,16 @@ public class PhotoResource {
         return photoService.getAllPhotos();
     }
 
-    @GetMapping
+    @GetMapping("/id")
     public Photo getPhotoById(@RequestParam(name = "photoId") String photoId){
         return photoService.getPhotoById(photoId);
     }
 
     @PostMapping
     public Photo savePhoto(@RequestBody Photo photo){
+        if(photo.getDateCreated()==null){
+            photo.setDateCreated(java.time.LocalDate.now());
+        }
         return photoService.savePhoto(photo);
     }
 
@@ -36,8 +38,7 @@ public class PhotoResource {
     }
 
     @DeleteMapping
-    public String updatePhoto(@RequestParam(name = "photoId") String photoId){
+    public String deletePhoto(@RequestParam(name = "photoId") String photoId){
         return photoService.deletePhoto(photoId);
     }
-
 }

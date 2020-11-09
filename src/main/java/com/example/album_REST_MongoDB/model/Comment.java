@@ -1,5 +1,6 @@
 package com.example.album_REST_MongoDB.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Comment {
@@ -7,12 +8,13 @@ public class Comment {
     private String photoId;
     private String message;
     private String createdBy;
-    private Date dateCreated;
+    private LocalDate dateCreated;
 
-    public Comment(String photoId, String message, String createdBy) {
+    public Comment(String photoId, String message, String createdBy, LocalDate dateCreated) {
         this.photoId = photoId;
         this.message = message;
         this.createdBy = createdBy;
+        this.dateCreated = dateCreated;
     }
 
     public String getId() {
@@ -47,11 +49,11 @@ public class Comment {
         this.createdBy = createdBy;
     }
 
-    public Date getDateCreated() {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
     }
 }

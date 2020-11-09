@@ -19,13 +19,16 @@ public class AlbumResource {
         return albumService.getAllAlbums();
     }
 
-    @GetMapping
+    @GetMapping("/id")
     public Album getAlbumById(@RequestParam(name = "albumId") String albumId){
         return albumService.getAlbumById(albumId);
     }
 
     @PostMapping
     public Album saveAlbum(@RequestBody Album album){
+        if(album.getDateCreated()==null){
+            album.setDateCreated(java.time.LocalDate.now());
+        }
         return albumService.saveAlbum(album);
     }
 

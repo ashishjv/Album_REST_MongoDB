@@ -1,18 +1,19 @@
 package com.example.album_REST_MongoDB.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Album {
     private String id;
     private String name;
     private String coverPhotoUrl;
     private String createdBy;
-    private Date dateCreated;
+    private LocalDate dateCreated;
 
-    public Album(String name, String coverPhotoUrl, String createdBy) {
+    public Album(String name, String coverPhotoUrl, String createdBy, LocalDate dateCreated) {
         this.name = name;
         this.coverPhotoUrl = coverPhotoUrl;
         this.createdBy = createdBy;
+        this.dateCreated = dateCreated;
     }
 
     public String getId() {
@@ -47,11 +48,11 @@ public class Album {
         this.createdBy = createdBy;
     }
 
-    public Date getDateCreated() {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
     }
 }

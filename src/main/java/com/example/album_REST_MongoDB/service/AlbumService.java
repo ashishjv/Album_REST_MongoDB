@@ -25,7 +25,7 @@ public class AlbumService {
         return albumRepository.save(album);
     }
 
-    /* Save an object with pre-existing id only updates its values */
+    /* Saving an object with pre-existing id only updates its values */
     public Album updateAlbum(Album album) {
         return albumRepository.save(album);
     }
