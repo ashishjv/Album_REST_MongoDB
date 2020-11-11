@@ -2,7 +2,6 @@ package com.example.album_REST_MongoDB.model;
 
 import com.example.album_REST_MongoDB.validation.ValidateEmail;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 public class User {
