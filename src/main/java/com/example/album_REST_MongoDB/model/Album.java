@@ -1,11 +1,17 @@
 package com.example.album_REST_MongoDB.model;
 
+import com.example.album_REST_MongoDB.validation.ValidateCustom;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 public class Album {
     private String id;
+    @Length(max = 10, message = "Only a maximum of 10 characters allowed for album name")
     private String name;
     private String coverPhotoUrl;
+    @ValidateCustom
     private String createdBy;
     private LocalDate dateCreated;
 

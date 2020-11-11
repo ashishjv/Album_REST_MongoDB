@@ -1,11 +1,14 @@
 package com.example.album_REST_MongoDB.model;
 
+import com.example.album_REST_MongoDB.validation.ValidateCustom;
+
 import java.time.LocalDate;
 
 public class Photo {
     private String id;
     private String albumId;
     private String photoUrl;
+    @ValidateCustom
     private String createdBy;
     private LocalDate dateCreated;
 

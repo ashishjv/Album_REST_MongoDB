@@ -5,6 +5,7 @@ import com.example.album_REST_MongoDB.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class PhotoResource {
     }
 
     @PostMapping
-    public Photo savePhoto(@RequestBody Photo photo){
+    public Photo savePhoto(@RequestBody @Valid Photo photo){
         if(photo.getDateCreated()==null){
             photo.setDateCreated(java.time.LocalDate.now());
         }
@@ -33,7 +34,7 @@ public class PhotoResource {
     }
 
     @PutMapping
-    public Photo updatePhoto(@RequestBody Photo photo){
+    public Photo updatePhoto(@RequestBody @Valid Photo photo){
         return photoService.updatePhoto(photo);
     }
 

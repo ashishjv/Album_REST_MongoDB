@@ -1,9 +1,16 @@
 package com.example.album_REST_MongoDB.model;
 
+import com.example.album_REST_MongoDB.validation.ValidateEmail;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 public class User {
     private String id;
     private String name;
+    @ValidateEmail(custRegex = "^[a-zA-Z0-9._]+@{1}[a-zA-Z0-9_]+[.]{1}[a-zA-Z0-9_]+[a-zA-Z0-9._]+$")
     private String email;
+    @NotEmpty(message = "Please add a valid profile photo URL")
     private String profilePhotoUrl;
 
     public User(String name, String email, String profilePhotoUrl) {

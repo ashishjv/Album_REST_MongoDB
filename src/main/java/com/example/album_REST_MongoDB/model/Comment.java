@@ -1,12 +1,17 @@
 package com.example.album_REST_MongoDB.model;
 
+import com.example.album_REST_MongoDB.validation.ValidateCustom;
+import org.hibernate.validator.constraints.Length;
+
 import java.time.LocalDate;
 import java.util.Date;
 
 public class Comment {
     private String id;
     private String photoId;
+    @Length(min = 5, message = "Minimum 5 characters required to post comment")
     private String message;
+    @ValidateCustom
     private String createdBy;
     private LocalDate dateCreated;
 

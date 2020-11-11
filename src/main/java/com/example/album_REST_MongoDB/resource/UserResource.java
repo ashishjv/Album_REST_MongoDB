@@ -1,10 +1,12 @@
 package com.example.album_REST_MongoDB.resource;
 
+import com.example.album_REST_MongoDB.exception.NameNotAllowedException;
 import com.example.album_REST_MongoDB.model.User;
 import com.example.album_REST_MongoDB.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,12 +27,18 @@ public class UserResource {
     }
 
     @PostMapping
-    public User saveUser(@RequestBody User user){
+    public User saveUser(@RequestBody @Valid User user) throws NameNotAllowedException {
+        if(user.getName().equalsIgnoreCase("root")){
+            throw new NameNotAllowedException();
+        }
         return userService.saveUser(user);
     }
 
     @PutMapping
-    public User updateUser(@RequestBody User user){
+    public User updateUser(@RequestBody @Valid User user) throws NameNotAllowedException {
+        if(user.getName().equalsIgnoreCase("root")){
+            throw new NameNotAllowedException();
+        }
         return userService.updateUser(user);
     }
 

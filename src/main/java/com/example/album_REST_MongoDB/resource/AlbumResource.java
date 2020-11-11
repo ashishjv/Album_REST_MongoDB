@@ -5,6 +5,7 @@ import com.example.album_REST_MongoDB.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class AlbumResource {
     }
 
     @PostMapping
-    public Album saveAlbum(@RequestBody Album album){
+    public Album saveAlbum(@RequestBody @Valid Album album){
         if(album.getDateCreated()==null){
             album.setDateCreated(java.time.LocalDate.now());
         }
@@ -33,7 +34,7 @@ public class AlbumResource {
     }
 
     @PutMapping
-    public Album updateAlbum(@RequestBody Album album){
+    public Album updateAlbum(@RequestBody @Valid Album album){
         return albumService.updateAlbum(album);
     }
 

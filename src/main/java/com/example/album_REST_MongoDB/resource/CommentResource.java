@@ -5,6 +5,7 @@ import com.example.album_REST_MongoDB.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class CommentResource {
     }
 
     @PostMapping
-    public Comment saveComment(@RequestBody Comment comment){
+    public Comment saveComment(@RequestBody @Valid Comment comment){
         if(comment.getDateCreated()==null){
             comment.setDateCreated(java.time.LocalDate.now());
         }
@@ -33,7 +34,7 @@ public class CommentResource {
     }
 
     @PutMapping
-    public Comment updateComment(@RequestBody Comment comment){
+    public Comment updateComment(@RequestBody @Valid Comment comment){
         return commentService.updateComment(comment);
     }
 
